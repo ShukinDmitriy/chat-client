@@ -1,0 +1,18 @@
+services:
+# go
+  golang:
+    container_name: golang
+    build:
+      context: docker/golang
+    volumes:
+      - .:/app
+    networks:
+      server:
+        ipv4_address: 192.168.99.10
+
+networks:
+  server:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.99.0/24
